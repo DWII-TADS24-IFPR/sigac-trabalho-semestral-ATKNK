@@ -45,4 +45,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function isAluno(){
+        return !is_null($this->aluno_id);
+    }
+
+    public function isAdmin(){
+        return is_null($this->aluno_id);
+    }
 }

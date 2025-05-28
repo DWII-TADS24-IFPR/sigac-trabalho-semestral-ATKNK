@@ -11,26 +11,42 @@
 
 <body>
     @include('layout.navbar')
-    <div class="container">
-        <a type="link" class="btn btn-primary" href="/categoria/create">Criar Categoria</a>
-        <h1>Lista de Categorias:</h1>
+    <div class="container mt-4">
+
+
+        <div class="d-flex flex-row justify-content-between align-items-center">
+            <h1>Lista de Categorias:</h1>
+            <a type="link" class="btn btn-primary m-1" href="/categoria/create">Criar Categoria</a>
+        </div>
+
         @foreach ($categorias as $categoria)
-            <div>
-                <h2>{{ $categoria->nome }}</h2>
+            <div class="container">
+
+                <div class="d-flex flex-row justify-content-between">
+                    <h2>{{ $categoria->nome }}</h2>
+
+                    <div class="d-flex flex-row align-items-center">
+                        <a type="link" class="btn btn-warning m-1"
+                            href="/categoria/{{ $categoria->id }}/edit">Editar</a>
+                        <form class="m-0 action="{{ route('categoria.destroy', $categoria->id) }}" method="POST"
+                            onsubmit="return confirm('Está certo que deseja excluir esta categoria?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+                        </form>
+                    </div>
+
+                </div>
+
                 <p>Máximo de Horas: {{ $categoria->maximo_horas }}</p>
-                <a type="link" class="btn btn-primary" href="/categoria/{{ $categoria->id }}/edit">Editar</a>
-                <form action="{{ route('categoria.destroy', $categoria->id) }}" method="POST"
-                    onsubmit="return confirm('Está certo que deseja excluir esta categoria?')">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Excluir</button>
-                </form>
+
+
             </div>
         @endforeach
     </div>
-    <div class="container">
+
         @include('layout.footer')
-    </div>
+
 </body>
 
 </html>

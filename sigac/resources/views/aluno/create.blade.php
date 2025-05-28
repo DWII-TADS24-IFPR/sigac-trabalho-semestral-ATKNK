@@ -64,9 +64,9 @@
         </form>
 
     </div>
-    <div class="container">
-        @include('layout.footer')
-    </div>
+    
+    @include('layout.footer')
+
 </body>
 
 </html>

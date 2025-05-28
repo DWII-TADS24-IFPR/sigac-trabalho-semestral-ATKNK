@@ -35,6 +35,12 @@ class TurmaController extends Controller
         return redirect()->route('turma.index')->with('success', 'Turma criada com sucesso!');
     }
 
+    public function show($id)
+    {
+        $turma = Turma::findOrFail($id);
+        return view('turma.show', compact('turma'));
+    }
+
     public function edit($id)
     {
         $turma = Turma::find($id);
@@ -56,5 +62,19 @@ class TurmaController extends Controller
         $turma->delete();
 
         return redirect()->route('turma.index')->with('success', 'Turma deletada com sucesso!');
+    }
+
+    public function chart($id)
+    {
+        $turma = Turma::with('alunos.comprovante')->findOrFail($id);
+
+        $data = [];
+
+        foreach ($turma->alunos as $aluno){
+            $horas = $aluno->comprovante->sum('horas');
+            $data[] = [$aluno->nome, $horas];
+        }
+
+        return view('turma.chart', ['dadosGrafico' => $data, 'turma' => $turma]);
     }
 }

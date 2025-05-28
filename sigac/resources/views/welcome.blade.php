@@ -11,16 +11,9 @@
 
 <body>
     @include('layout.navbar')
-    <div class="container">
-        <a type="link" class="btn btn-primary" href="/aluno">Aluno</a>
-        <a type="link" class="btn btn-primary" href="/categoria">Categoria</a>
-        <a type="link" class="btn btn-primary" href="/comprovante">Comprovante</a>
-        <a type="link" class="btn btn-primary" href="/curso">Curso</a>
-        <a type="link" class="btn btn-primary" href="/declaracao">Declaração</a>
-        <a type="link" class="btn btn-primary" href="/documento">Documento</a>
-        <a type="link" class="btn btn-primary" href="/eixo">Eixo</a>
-        <a type="link" class="btn btn-primary" href="/nivel">Nível</a>
-        <a type="link" class="btn btn-primary" href="/turma">Turma</a>
+    <div class="d-flex align-items-center justify-content-center mt-5 flex-column">
+        <h2>Bem-vindo(a) ao Sistema de Gerenciamento de Atividades Complementares</h2>
+        <p>Este projeto foi desenvolvido na disciplina de Desenvolvimento Web II</p>
     </div>
     @include('layout.footer')
 </body>
