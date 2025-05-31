@@ -13,24 +13,19 @@ use App\Http\Controllers\EixoController;
 use App\Http\Controllers\NivelController;
 use App\Http\Controllers\TurmaController;
 
+use App\Http\Middleware\IsAdmin;
+use App\Http\Middleware\IsAluno;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('aluno', AlunoController::class);
-Route::resource('categoria', CategoriaController::class)->parameters(['categoria' => 'categoria']);
-Route::resource('comprovante', ComprovanteController::class);
-Route::resource('curso', CursoController::class);
-Route::resource('declaracao', DeclaracaoController::class);
-Route::resource('documento', DocumentoController::class);
-Route::resource('eixo', EixoController::class);
-Route::resource('nivel', NivelController::class);
-Route::resource('turma', TurmaController::class);
 
 Route::get('/chart', [TurmaController::class, 'chart']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
+
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -39,8 +34,21 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'aluno'])->group(function (){
+Route::middleware(['auth', 'aluno'])->group(function () {
     Route::get('/dashboard-aluno', [AlunoController::class, 'index']);
 });
 
-require __DIR__.'/auth.php';
+Route::middleware(['auth', IsAdmin::class])->group(function () {
+    Route::get('/dashboard-admin', [AdminController::class, 'index']);
+    Route::resource('aluno', AlunoController::class);
+    Route::resource('categoria', CategoriaController::class)->parameters(['categoria' => 'categoria']);
+    Route::resource('comprovante', ComprovanteController::class);
+    Route::resource('curso', CursoController::class);
+    Route::resource('declaracao', DeclaracaoController::class);
+    Route::resource('documento', DocumentoController::class);
+    Route::resource('eixo', EixoController::class);
+    Route::resource('nivel', NivelController::class);
+    Route::resource('turma', TurmaController::class);
+});
+
+require __DIR__ . '/auth.php';

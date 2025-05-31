@@ -20,28 +20,35 @@ class Aluno extends Model
         'cpf',
         'email',
         'senha',
+        'role',
         'user_id',
         'curso_id',
         'turma_id',
+
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function comprovante(){
+    public function comprovante()
+    {
         return $this->hasMany(Comprovante::class);
     }
 
-    public function curso(){
+    public function curso()
+    {
         return $this->belongsTo(Curso::class);
     }
 
-    public function turma(){
+    public function turma()
+    {
         return $this->belongsTo(Turma::class);
     }
 
-    public function declaracao(){
+    public function declaracao()
+    {
         return $this->hasMany(Declaracao::class);
     }
 }

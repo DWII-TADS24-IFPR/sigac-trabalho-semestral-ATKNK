@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     @vite(['resources/js/app.js'])
 
-    <title>SIGAC </title>
+    <title>SIGAC</title>
 </head>
 
 <body>
@@ -41,9 +41,8 @@
         @endif
     </div>
 
-    <div class="container mt-5">
         @include('layout.footer')
-    </div>
+    
 </body>
 
 </html>
