@@ -1,40 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite(['resources/js/app.js'])
-
-    <title>SIGAC</title>
-</head>
-
-<body>
-
-    @include('layout.navbar')
-
+@section('content')
     <div class="container">
-        <a type="link" class="btn btn-primary" href="/eixo/create">Criar Eixo</a>
-
-        <h1>Lista de Eixos:</h1>
-
+        <div class="d-flex flex-row justify-content-between align-items-center">
+            <h1>Lista de Eixos:</h1>
+            <a type="link" class="btn btn-primary" href="/eixo/create">Criar Eixo</a>
+        </div>
         @foreach ($eixos as $eixo)
-            <div>
-                <h2>{{ $eixo->nome }}</h2>
+            <div class="container mb-3 p-2 border border-tertiary rounded shadow-sm">
+
+                <div class="d-flex flex-row justify-content-between">
+                    <h2>{{ $eixo->nome }}</h2>
+
+                    <div class="d-flex flex-row align-items-center">
+                        <a type="link" class="btn btn-warning m-1 shadow-sm"
+                            href="/eixo/{{ $eixo->id }}/edit">Editar</a>
+                        <form action="{{ route('eixo.destroy', $eixo->id) }}" method="POST"
+                            onsubmit="return confirm('Está certo que deseja excluir este eixo?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-
-            <a type="link" class="btn btn-primary" href="/eixo/{{ $eixo->id }}/edit">Editar</a>
-            <form action="{{ route('eixo.destroy', $eixo->id) }}" method="POST"
-                onsubmit="return confirm('Está certo que deseja excluir este eixo?')">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">Excluir</button>
-            </form>
         @endforeach
-    </div>
-
-    @include('layout.footer')
-
-</body>
-
-</html>
+    @endsection

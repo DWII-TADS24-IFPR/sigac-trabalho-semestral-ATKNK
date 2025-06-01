@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+@extends('layout.app')
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SIGAC</title>
-    @vite(['resources/js/app.js', 'resources/sass/app.scss'])
-</head>
-
-<body>
-    @include('layout.navbar')
-
+@section('content')
     <div class="container mt-4">
         <h1>Editar Documento: {{ $documento->descricao }}</h1>
 
@@ -79,10 +69,4 @@
             <button type="submit" class="btn btn-primary">Salvar</button>
         </form>
     </div>
-
-    <div class="container mt-5">
-        @include('layout.footer')
-    </div>
-</body>
-
-</html>
+@endsection

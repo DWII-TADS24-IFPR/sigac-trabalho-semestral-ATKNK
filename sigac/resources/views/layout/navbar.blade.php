@@ -14,39 +14,39 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="aluno">Aluno</a>
+                    <a class="nav-link" href="/aluno">Aluno</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="categoria">Categoria</a>
+                    <a class="nav-link" href="/categoria">Categoria</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="comprovante">Comprovante</a>
+                    <a class="nav-link" href="/comprovante">Comprovante</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="curso">Curso</a>
+                    <a class="nav-link" href="/curso">Curso</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="declaracao">Declaração</a>
+                    <a class="nav-link" href="/declaracao">Declaração</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="documento">Documento</a>
+                    <a class="nav-link" href="/documento">Documento</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="eixo">Eixo</a>
+                    <a class="nav-link" href="/eixo">Eixo</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="nivel">Nível</a>
+                    <a class="nav-link" href="/nivel">Nível</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="turma">Turma</a>
+                    <a class="nav-link" href="/turma">Turma</a>
                 </li>
 
             </ul>

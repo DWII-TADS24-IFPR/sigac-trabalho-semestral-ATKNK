@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIGAC</title>
-    @vite(['resources/js/app.js', 'resources/sass/app.scss'])
-</head>
-
-<body>
-    @include('layout.navbar')
-    
-    <div class="container"> 
+@section('content')
+    <div class="container">
         <h2>Editando nível: {{ $curso->nome }}</h2>
 
         <form action="{{ route('curso.update', $curso->id) }}" method="POST">
@@ -25,8 +15,4 @@
             <button type="submit" class="btn btn-primary">Salvar</button>
         </form>
     </div>
-
-    @include('layout.footer')
-</body>
-
-</html>
+@endsection

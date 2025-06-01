@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIGAC</title>
-    @vite(['resources/js/app.js', 'resources/sass/app.scss'])
-</head>
-
-<body>
-    @include('layout.navbar')
-
+@section('content')
     <div class="container">
         <h2>Editando aluno: {{ $aluno->nome }}</h2>
 
@@ -19,25 +9,24 @@
                 @method('PUT')
                 @csrf
                 <div class="mb-3">
-                    <p>Nome: {{ $aluno->nome }}</p>
                     <label for="nome" class="form-label">Digite o novo nome:</label>
                     <input type="text" name="nome" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
-                    <p>CPF: {{ $aluno->cpf }}</p>
+                    <h5>CPF: {{ $aluno->cpf }}</h5>
                     <label for="cpf" class="form-label">Digite o novo CPF:</label>
                     <input type="text" name="cpf" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
-                    <p>Email: {{ $aluno->email }}</p>
+                    <h5>Email: {{ $aluno->email }}</h5>
                     <label for="email" class="form-label">Digite o novo email:</label>
                     <input type="text" name="email" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="curso_id" class="form-label">Curso:</label>
+                    <h5>Curso:</h5>
                     <select name="curso_id" class="form-select" required>
                         <option value="">Selecione o novo curso</option>
                         @foreach ($cursos as $curso)
@@ -47,7 +36,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="turma_id" class="form-label">Turma:</label>
+                    <h5>Turma:</h5>
                     <select name="turma_id" class="form-select" required>
                         <option value="">Selecione a nova turma</option>
                         @foreach ($turmas as $turma)
@@ -63,7 +52,4 @@
 
     </div>
 
-    @include('layout.footer')
-</body>
-
-</html>
+@endsection

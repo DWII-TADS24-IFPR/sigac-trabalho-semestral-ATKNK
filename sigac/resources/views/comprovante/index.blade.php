@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+@extends('layout.app')
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SIGAC</title>
-    @vite(['resources/js/app.js', 'resources/sass/app.scss'])
-</head>
-
-<body>
-    @include('layout.navbar')
-
-    <div class="container mt-4">
+@section('content')
+    <div class="container mt-1">
 
         <div class="d-flex flex-row justify-content-between align-items-center">
             <h1>Lista de Comprovantes</h1>
@@ -19,7 +9,8 @@
         </div>
 
         @foreach ($comprovantes as $comprovante)
-            <div class="container">
+            <div class="container mb-3 p-2 border border-tertiary rounded shadow-sm">
+
                 <div class="d-flex flex-row justify-content-between">
                     <h2>Comprovante #{{ $comprovante->id }}</h2>
 
@@ -49,9 +40,4 @@
             <p>Nenhum comprovante cadastrado.</p>
         @endif
     </div>
-
-    @include('layout.footer')
-
-</body>
-
-</html>
+@endsection

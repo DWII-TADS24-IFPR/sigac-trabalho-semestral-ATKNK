@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIGAC</title>
-    @vite(['resources/js/app.js', 'resources/sass/app.scss'])
-</head>
-
-<body>
-    @include('layout.navbar')
-    
+@section('content')
     <div class="container"> 
-        <h2>Editando eixo: {{ $eixo->nome }}</h2>
+        <h2>Editando Eixo: {{ $eixo->nome }}</h2>
 
         <form action="{{ route('eixo.update', $eixo->id) }}" method="POST">
             @method('PUT')
@@ -25,8 +15,4 @@
             <button type="submit" class="btn btn-primary">Salvar</button>
         </form>
     </div>
-
-    @include('layout.footer')
-</body>
-
-</html>
+@endsection

@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+@extends('layout.app')
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SIGAC</title>
-    @vite(['resources/js/app.js', 'resources/sass/app.scss'])
-</head>
-
-<body>
-    @include('layout.navbar')
-
+@section('content')
     <div class="container mt-4">
         <h1>Criar Comprovante</h1>
 
@@ -24,7 +14,8 @@
 
             <div class="mb-3">
                 <label for="horas" class="form-label">Horas:</label>
-                <input type="number" name="horas" class="form-control" required value="{{ old('horas') }}" step="0.1" min="0">
+                <input type="number" name="horas" class="form-control" required value="{{ old('horas') }}"
+                    step="0.1" min="0">
             </div>
 
             <div class="mb-3">
@@ -66,10 +57,4 @@
             <button type="submit" class="btn btn-primary">Cadastrar</button>
         </form>
     </div>
-
-    <div class="container mt-5">
-        @include('layout.footer')
-    </div>
-</body>
-
-</html>
+@endsection

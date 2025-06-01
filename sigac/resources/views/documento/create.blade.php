@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+@extends('layout.app')
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SIGAC</title>
-    @vite(['resources/js/app.js', 'resources/sass/app.scss'])
-</head>
-
-<body>
-    @include('layout.navbar')
-
+@section('content')
     <div class="container mt-4">
         <h1>Criar Documento</h1>
 
@@ -29,7 +19,8 @@
 
             <div class="mb-3">
                 <label for="horas_in" class="form-label">Horas Inseridas:</label>
-                <input type="number" name="horas_in" class="form-control" step="0.1" min="0" value="{{ old('horas_in') }}" required>
+                <input type="number" name="horas_in" class="form-control" step="0.1" min="0"
+                    value="{{ old('horas_in') }}" required>
             </div>
 
             <div class="mb-3">
@@ -72,16 +63,11 @@
 
             <div class="mb-3">
                 <label for="horas_out" class="form-label">Horas Validadas (opcional):</label>
-                <input type="number" name="horas_out" class="form-control" step="0.1" min="0" value="{{ old('horas_out') }}">
+                <input type="number" name="horas_out" class="form-control" step="0.1" min="0"
+                    value="{{ old('horas_out') }}">
             </div>
 
             <button type="submit" class="btn btn-primary">Cadastrar</button>
         </form>
     </div>
-
-    <div class="container mt-5">
-        @include('layout.footer')
-    </div>
-</body>
-
-</html>
+@endsection

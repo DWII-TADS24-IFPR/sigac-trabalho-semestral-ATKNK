@@ -1,40 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite(['resources/js/app.js'])
+@section('content')
+    <div class="container mt-1">
 
-    <title>SIGAC</title>
-</head>
-
-<body>
-
-    @include('layout.navbar')
-
-    <div class="container">
-        <a type="link" class="btn btn-primary" href="/nivel/create">Criar Nivel</a>
-
-        <h1>Lista de Níveis:</h1>
+        <div class="d-flex flex-row justify-content-between align-items-center">
+            <h1>Lista de Níveis:</h1>
+            <a class="btn btn-primary m-1 shadow-sm" href="/nivel/create">Criar Nível</a>
+        </div>
 
         @foreach ($niveis as $nivel)
-            <div>
-                <h2>{{ $nivel->nome }}</h2>
-            </div>
+            <div class="container mb-3 p-2 border border-tertiary rounded shadow-sm">
 
-            <a type="link" class="btn btn-primary" href="/nivel/{{ $nivel->id }}/edit">Editar</a>
-            <form action="{{ route('nivel.destroy', $nivel->id) }}" method="POST"
-                onsubmit="return confirm('Está certo que deseja excluir este nível?')">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">Excluir</button>
-            </form>
+                <div class="d-flex flex-row justify-content-between">
+                    <h2>{{ $nivel->nome }}</h2>
+
+                    <div class="d-flex flex-row align-items-center">
+                        <a class="btn btn-warning m-1 shadow-sm" href="/nivel/{{ $nivel->id }}/edit">Editar</a>
+                        <form class="m-0 shadow-sm" action="{{ route('nivel.destroy', $nivel->id) }}" method="POST"
+                            onsubmit="return confirm('Está certo que deseja excluir este nível?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
         @endforeach
     </div>
-
-    @include('layout.footer')
-
-</body>
-
-</html>
+@endsection

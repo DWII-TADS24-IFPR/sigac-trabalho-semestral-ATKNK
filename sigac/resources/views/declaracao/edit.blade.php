@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+@extends('layout.app')
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SIGAC</title>
-    @vite(['resources/js/app.js', 'resources/sass/app.scss'])
-</head>
-
-<body>
-    @include('layout.navbar')
-
+@section('content')
     <div class="container mt-4">
         <h2>Editando Declaração: {{ $declaracao->hash }}</h2>
 
@@ -21,8 +11,7 @@
             <div class="mb-3">
                 <p>Hash: {{ $declaracao->hash }}</p>
                 <label for="hash" class="form-label">Digite o novo hash:</label>
-                <input type="text" name="hash" class="form-control" value="{{ old('hash', $declaracao->hash) }}"
-                    required>
+                <input type="text" name="hash" class="form-control" value="{{ old('hash', $declaracao->hash) }}" required>
             </div>
 
             <div class="mb-3">
@@ -62,10 +51,4 @@
             <button type="submit" class="btn btn-primary">Salvar</button>
         </form>
     </div>
-
-    <div class="container mt-5">
-        @include('layout.footer')
-    </div>
-</body>
-
-</html>
+@endsection
