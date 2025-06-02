@@ -28,7 +28,7 @@ class AlunoSeeder extends Seeder
                 'cpf' => "149477",
                 'email' => "arthur@gmail.com",
                 'senha' => "senha123",
-                'user_id' => null,
+                'user_id' => 1,
                 'curso_id' => 1,
                 'turma_id' => 1,
             ],

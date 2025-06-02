@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Aluno;
 use App\Models\Curso;
 use App\Models\Turma;
+use App\Models\Documento;
 
 class AlunoController extends Controller
 {
@@ -49,9 +50,14 @@ class AlunoController extends Controller
         return redirect()->route('aluno.index')->with('success', 'Aluno criado com sucesso!');
     }
 
-    public function show(Aluno $aluno)
+    public function show(Aluno $aluno, Documento $documentos)
     {
-        return view('aluno.show', compact('aluno'));
+        $documentos = Documento::where('user_id', $aluno->user_id)->get();
+
+        $horas_submetidas = $documentos->sum('horas_out');
+        $horas_aprovadas = $documentos->where('status', 'aprovado')->sum('horas_out');
+
+        return view('aluno.show', compact('aluno', 'horas_submetidas', 'horas_aprovadas'));
     }
 
     public function edit(Aluno $aluno)

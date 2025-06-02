@@ -16,6 +16,7 @@
                     <h2>{{ $aluno->nome }}</h2>
 
                     <div class="d-flex flex-row align-items-center">
+                        <a type="link" class="btn btn-secondary m-1 shadow-sm" href="/aluno/{{ $aluno->id }}">Exibir</a>
                         <a type="link" class="btn btn-warning m-1 shadow-sm" href="/aluno/{{ $aluno->id }}/edit">Editar</a>
                         <form class="m-0 shadow-sm" action="{{ route('aluno.destroy', $aluno->id) }}" method="POST"
                             onsubmit="return confirm('Está certo que deseja excluir este aluno?')">
@@ -31,7 +32,7 @@
                     <p>CPF: {{ $aluno->cpf }}</p>
                     <p>Email: {{ $aluno->email }}</p>
                     <p>Curso: {{ $aluno->curso->nome }}</p>
-                    <p>Turma: {{ $aluno->turma->ano }}</p>
+                    <p>Turma: {{$aluno->curso->sigla}} {{ $aluno->turma->ano }}</p>
                 </div>
 
             </div>

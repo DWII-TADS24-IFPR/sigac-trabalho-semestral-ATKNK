@@ -20,10 +20,6 @@ class Logado
         if ($user->role == 'admin') {
             return redirect()->route('dashboard');
         }
-        return redirect(
-            
-        ) 
-
-        return $next($request);
+        return redirect();
     }
 }

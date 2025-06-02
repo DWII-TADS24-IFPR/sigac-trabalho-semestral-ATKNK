@@ -40,7 +40,7 @@
                     <select name="turma_id" class="form-select" required>
                         <option value="">Selecione a nova turma</option>
                         @foreach ($turmas as $turma)
-                            <option value="{{ $turma->id }}">{{ $turma->ano }}</option>
+                            <option value="{{ $turma->id }}">{{ $turma->curso->sigla }} {{ $turma->ano }}</option>
                         @endforeach
                     </select>
                 </div>
