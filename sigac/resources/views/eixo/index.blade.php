@@ -13,8 +13,7 @@
                     <h2>{{ $eixo->nome }}</h2>
 
                     <div class="d-flex flex-row align-items-center">
-                        <a type="link" class="btn btn-warning m-1 shadow-sm"
-                            href="/eixo/{{ $eixo->id }}/edit">Editar</a>
+                        <a type="link" class="btn btn-warning m-1 shadow-sm" href="/eixo/{{ $eixo->id }}/edit">Editar</a>
                         <form action="{{ route('eixo.destroy', $eixo->id) }}" method="POST"
                             onsubmit="return confirm('Está certo que deseja excluir este eixo?')">
                             @csrf
@@ -25,4 +24,5 @@
                 </div>
             </div>
         @endforeach
-    @endsection
+    </div>
+@endsection

@@ -15,6 +15,9 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+        if (\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->isAdmin()) {
+            return $next($request);
+        }
+        abort(403, 'Acesso negado. Apenas administradores podem acessar esta página');
     }
 }

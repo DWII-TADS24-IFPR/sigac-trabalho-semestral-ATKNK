@@ -54,7 +54,7 @@ class AlunoController extends Controller
     {
         $documentos = Documento::where('user_id', $aluno->user_id)->get();
 
-        $horas_submetidas = $documentos->sum('horas_out');
+        $horas_submetidas = $documentos->sum('horas_in');
         $horas_aprovadas = $documentos->where('status', 'aprovado')->sum('horas_out');
 
         return view('aluno.show', compact('aluno', 'horas_submetidas', 'horas_aprovadas'));

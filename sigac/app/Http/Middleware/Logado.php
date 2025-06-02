@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
 
 class Logado
 {
@@ -18,7 +19,10 @@ class Logado
         $user = @Auth::user();
 
         if ($user->role == 'admin') {
-            return redirect()->route('dashboard');
+            return redirect()->route('/');
+        }
+        elseif ($user->role == 'aluno') {
+            return redirect()->route('dashboard-aluno');
         }
         return redirect();
     }
