@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Turma;
 use App\Models\Curso;
+use App\Models\Aluno;
+use App\Models\Documento;
 
 class TurmaController extends Controller
 {
@@ -37,8 +39,19 @@ class TurmaController extends Controller
 
     public function show($id)
     {
+        $alunos = Aluno::where('turma_id', $id)->get();
         $turma = Turma::findOrFail($id);
-        return view('turma.show', compact('turma'));
+
+        $dados = [];
+
+        foreach ($alunos as $aluno){
+            $documentos = Documento::where('user_id', $aluno->user_id)->get();
+            $horas_aprovadas = $documentos->where('status', 'aprovado')->sum('horas_out');
+
+            $dados[] = [$aluno->nome, $horas_aprovadas];
+        }
+
+        return view('turma.show', compact('turma', 'alunos', 'dados'));
     }
 
     public function edit($id)
@@ -62,19 +75,5 @@ class TurmaController extends Controller
         $turma->delete();
 
         return redirect()->route('turma.index')->with('success', 'Turma deletada com sucesso!');
-    }
-
-    public function chart($id)
-    {
-        $turma = Turma::with('alunos.comprovante')->findOrFail($id);
-
-        $data = [];
-
-        foreach ($turma->alunos as $aluno){
-            $horas = $aluno->comprovante->sum('horas');
-            $data[] = [$aluno->nome, $horas];
-        }
-
-        return view('turma.chart', ['dadosGrafico' => $data, 'turma' => $turma]);
     }
 }

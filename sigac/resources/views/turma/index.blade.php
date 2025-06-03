@@ -15,6 +15,7 @@
                     <h2>{{ $turma->curso->sigla ?? 'Curso não definido' }} - {{ $turma->ano }}</h2>
 
                     <div class="d-flex flex-row align-items-center">
+                        <a type="link" class="btn btn-secondary m-1 shadow-sm" href="/turma/{{ $turma->id }}">Exibir</a>
                         <a class="btn btn-warning m-1 shadow-sm" href="/turma/{{ $turma->id }}/edit">Editar</a>
                         <form class="m-0 shadow-sm" action="{{ route('turma.destroy', $turma->id) }}" method="POST"
                             onsubmit="return confirm('Está certo que deseja excluir esta turma?')">

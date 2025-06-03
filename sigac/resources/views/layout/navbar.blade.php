@@ -51,10 +51,24 @@
 
             </ul>
 
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            <div class="d-flex flex-column justify-center">
+                @auth
+                    <div class="d-flex flex-row justify-content-around align-items-center">
+                        <h5 class="m-2">{{ Auth::user()->name }}</h5>
+                        <a href="{{ route('profile.edit') }}" class="btn m-2">Perfil</a>
+
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="btn m-2">Logout</button>
+                        </form>
+                    </div>
+                @endauth
+
+                @guest
+                    <a href="{{ route('login') }}" class="text-gray-600 hover:text-gray-800">Login</a>
+                    <a href="{{ route('register') }}" class="text-gray-600 hover:text-gray-800">Registrar</a>
+                @endguest
+            </div>
 
         </div>
     </div>
