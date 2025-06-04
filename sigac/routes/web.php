@@ -53,6 +53,9 @@ Route::middleware(['auth', IsAdmin::class])->group(function () {
     Route::resource('eixo', EixoController::class);
     Route::resource('nivel', NivelController::class);
     Route::resource('turma', TurmaController::class);
+
+    Route::patch('documento/{documento}/aprovar', [DocumentoController::class, 'aprovar'])->name('documento.aprovar');
+    Route::patch('documento/{documento}/rejeitar', [DocumentoController::class, 'rejeitar'])->name('documento.rejeitar');
 });
 
 require __DIR__ . '/auth.php';

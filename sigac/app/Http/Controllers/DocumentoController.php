@@ -96,4 +96,24 @@ class DocumentoController extends Controller
 
         return redirect()->route('dashboard-aluno')->with('success', 'Documento criado com sucesso!');
     }
+
+    public function aprovar(Documento $documento)
+    {
+        $documento->update([
+            'status' => 'aprovado',
+            'horas_out' => $documento->horas_in,
+        ]);
+
+        return redirect()->back()->with('success', 'Documento aprovado com sucesso!');
+    }
+
+    public function rejeitar(Documento $documento)
+    {
+        $documento->update([
+            'status' => 'rejeitado',
+            'horas_out' => null,
+        ]);
+
+        return redirect()->back()->with('error', 'Documento rejeitado.');
+    }
 }

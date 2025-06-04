@@ -13,6 +13,15 @@
         <p>Categoria: {{ $documento->categoria->nome ?? 'N/A' }}</p>
         <p>Usuário: {{ $documento->user->name ?? 'N/A' }}</p>
     </div>
-    <button class="btn btn-success">Aprovar</button>
-    <button class="btn btn-danger">Rejeitar</button>
+    <form action="{{ route('documento.aprovar', $documento->id) }}" method="POST">
+        @csrf
+        @method('PATCH')
+        <button type="submit" class="btn btn-success">Aprovar</button>
+    </form>
+
+    <form action="{{ route('documento.rejeitar', $documento->id) }}" method="POST">
+        @csrf
+        @method('PATCH')
+        <button type="submit" class="btn btn-danger">Rejeitar</button>
+    </form>
 @endsection
