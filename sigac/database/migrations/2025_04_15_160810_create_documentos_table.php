@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('url');
             $table->string('descricao');
             $table->double('horas_in');
-            $table->string('status');
+            $table->string('status')->default('pendente');
             $table->string('comentario');
-            $table->double('horas_out');
+            $table->double('horas_out')->nullable();
             $table->foreignId('categoria_id')->constrained('categorias')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();

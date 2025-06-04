@@ -26,7 +26,6 @@ Route::get('/chart', [TurmaController::class, 'chart']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -35,8 +34,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'aluno'])->group(function () {
-    Route::get('/dashboard-aluno', [AlunoController::class, 'index']);
+Route::middleware(['auth', IsAluno::class])->group(function () {
+    Route::get('/dashboard-aluno', function () {
+        return view('dashboardaluno');
+    })->name('dashboard-aluno');
+    Route::get('/submit', [DocumentoController::class, 'submit']);
+    Route::post('/send', [DocumentoController::class, 'send'])->name('documento.send');
 });
 
 Route::middleware(['auth', IsAdmin::class])->group(function () {

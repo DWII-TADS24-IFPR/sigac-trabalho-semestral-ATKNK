@@ -13,6 +13,7 @@
                     <h2>Documento #{{ $documento->id }}</h2>
 
                     <div>
+                        <a type="link" class="btn btn-secondary m-1 shadow-sm" href="/documento/{{ $documento->id }}">Exibir</a>
                         <a href="{{ route('documento.edit', $documento->id) }}"
                             class="btn btn-warning m-1 shadow-sm">Editar</a>
 
